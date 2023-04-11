@@ -1,19 +1,44 @@
-function playRound(playerSelection, computerSelection) {}
+function playRound(userChoice, ComputerSelection) {
+  if (userChoice === computerSelection) {
+    return "It's a tie";
+  } else if (userChoice == "rock") {
+    if (ComputerSelection == "scissors") {
+      return "rock defeats scissors! player wins";
+    } else if (ComputerSelection == "paper") {
+      return "paper defeats rock! Computer win";
+    }
+  } else if (userChoice == "paper") {
+    if (ComputerSelection == "scissors") {
+      return "scissors defeats paper! computer wins";
+    } else if (ComputerSelection == "stone") {
+      return "paper defeats stone! Player wins";
+    }
+  } else if (userChoice == "scissors") {
+    if (ComputerSelection == "stone") {
+      return "stone defeats scissors! Computer wins";
+    } else if (ComputerSelection == "paper") {
+      return "scissors defeat paper";
+    }
+  }
+}
 
-const playerSelection = (userInput) => {
-  userInput = userInput.toLowerCase();
+let userChoice = prompt("Enter your selection");
+function getComputerChoice(userInput) {
+  // this entire function takes userinput and checks if it is rock/paper/scissor if not then displays error
+  let userChoice = userInput.toLowerCase(); //converting the userinput to lowercase
   if (
-    userInput === "rock" ||
-    userInput === "paper" ||
-    userInput === "scissors"
+    userChoice === "rock" ||
+    userChoice === "paper" ||
+    userChoice === "scissors"
   ) {
     return userInput;
   } else {
-    console.log("error");
+    return "error";
   }
-}; //string
-const computerSelection = (getComputerChoice) => {
-  Math.floor(Math.random() * 1);
+}
+// making a number and then using it to choose rock/paper/scissor for the computer
+function getComputerChoice() {
+  Math.floor(Math.random() * 3);
   switch (1) {
     case 0:
       return "rock";
@@ -21,21 +46,5 @@ const computerSelection = (getComputerChoice) => {
       return "paper";
     case 2:
       return "scissors";
-  }
-};
-console.log(
-  `The player chose ${playerSelection}. The Computer chose ${getComputerChoice}`
-);
-
-function game(playerSelection, computerSelection) {
-  if (playerSelection == computerSelection) {
-    console.log("It's a tie");
-  } else {
-    if (playerSelection == "rock") {
-      computerSelection == "paper";
-      console.log("Paper defeats rock! Computer wins");
-    } else {
-      console.log("Congratulations! You win!");
-    }
   }
 }
