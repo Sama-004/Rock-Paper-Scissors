@@ -1,31 +1,33 @@
 function playRound(userChoice, ComputerSelection) {
   if (userChoice === computerSelection) {
     return "It's a tie";
-  } else if (userChoice == "rock") {
+  } //when user choses rock
+  else if (userChoice == "rock") {
     if (ComputerSelection == "scissors") {
       return "rock defeats scissors! player wins";
     } else if (ComputerSelection == "paper") {
       return "paper defeats rock! Computer win";
     }
-  } else if (userChoice == "paper") {
+  } //when user choses paper
+  else if (userChoice == "paper") {
     if (ComputerSelection == "scissors") {
       return "scissors defeats paper! computer wins";
-    } else if (ComputerSelection == "stone") {
+    } else if (ComputerSelection == "rock") {
       return "paper defeats stone! Player wins";
     }
-  } else if (userChoice == "scissors") {
-    if (ComputerSelection == "stone") {
+  } // when user choses scissors
+  else if (userChoice == "scissors") {
+    if (ComputerSelection == "rock") {
       return "stone defeats scissors! Computer wins";
     } else if (ComputerSelection == "paper") {
       return "scissors defeat paper";
     }
   }
 }
-
-let userChoice = prompt("Enter your selection");
-function getComputerChoice(userInput) {
+let mychoice;
+function getUserChoice(mychoice) {
   // this entire function takes userinput and checks if it is rock/paper/scissor if not then displays error
-  let userChoice = userInput.toLowerCase(); //converting the userinput to lowercase
+  let userChoice = mychoice.toLowerCase(); //converting the userinput to lowercase
   if (
     userChoice === "rock" ||
     userChoice === "paper" ||
@@ -48,3 +50,9 @@ function getComputerChoice() {
       return "scissors";
   }
 }
+function playGame() {
+  mychoice = "rock";
+  ComputerSelection = getComputerChoice();
+  playRound();
+}
+playGame();
