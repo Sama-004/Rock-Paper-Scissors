@@ -24,9 +24,9 @@ function playRound(userChoice, ComputerSelection) {
     }
   }
 }
-let mychoice;
+let mychoice = null;
 function getUserChoice(mychoice) {
-  // this entire function takes userinput and checks if it is rock/paper/scissor if not then displays error
+  //  take userinput and check if it is rock/paper/scissor if not then displays error
   let userChoice = mychoice.toLowerCase(); //converting the userinput to lowercase
   if (
     userChoice === "rock" ||
@@ -40,19 +40,16 @@ function getUserChoice(mychoice) {
 }
 // making a number and then using it to choose rock/paper/scissor for the computer
 function getComputerChoice() {
-  Math.floor(Math.random() * 3);
-  switch (1) {
-    case 0:
-      return "rock";
-    case 1:
-      return "paper";
-    case 2:
-      return "scissors";
-  }
+  const choices = ["rock", "paper", "scissors"];
+  const randomNumber = Math.floor(Math.random() * 3);
+  return choices[randomNumber];
 }
 function playGame() {
   mychoice = "rock";
   ComputerSelection = getComputerChoice();
+  let playerScore;
+  let computerScore;
+
   playRound();
 }
 playGame();
