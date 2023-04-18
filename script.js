@@ -1,30 +1,36 @@
-function playRound(userChoice, ComputerSelection) {
-  if (userChoice === computerSelection) {
-    return "It's a tie";
+const game= () =>{
+let mychoice = null;
+let computer = null;
+function checkWinner(userChoice, computer) {
+    if (userChoice === computer) {
+    return "It's a tie!";
   } //when user choses rock
   else if (userChoice == "rock") {
-    if (ComputerSelection == "scissors") {
+    if (computer == "scissors") {
       return "rock defeats scissors! player wins";
-    } else if (ComputerSelection == "paper") {
+    } else if (computer == "paper") {
       return "paper defeats rock! Computer win";
     }
   } //when user choses paper
   else if (userChoice == "paper") {
-    if (ComputerSelection == "scissors") {
+    if (computer == "scissors") {
       return "scissors defeats paper! computer wins";
-    } else if (ComputerSelection == "rock") {
+    } else if (computer == "rock") {
       return "paper defeats stone! Player wins";
     }
   } // when user choses scissors
   else if (userChoice == "scissors") {
-    if (ComputerSelection == "rock") {
+    if (computer == "rock") {
       return "stone defeats scissors! Computer wins";
-    } else if (ComputerSelection == "paper") {
+    } else if (computer == "paper") {
       return "scissors defeat paper";
     }
   }
 }
-let mychoice = null;
+
+
+
+mychoice = prompt("Please Enter you choice", );
 function getUserChoice(mychoice) {
   //  take userinput and check if it is rock/paper/scissor if not then displays error
   let userChoice = mychoice.toLowerCase(); //converting the userinput to lowercase
@@ -38,18 +44,19 @@ function getUserChoice(mychoice) {
     return "error";
   }
 }
-// making a number and then using it to choose rock/paper/scissor for the computer
+//Choosing a number between 1 to 3 and then using it to choose among rock/paper/scissor
 function getComputerChoice() {
-  const choices = ["rock", "paper", "scissors"];
-  const randomNumber = Math.floor(Math.random() * 3);
-  return choices[randomNumber];
+    const options = ["rock", "paper", "scissors"];
+    const computerchoice = options[Math.floor(Math.random() * 3)];
+    return computerchoice;
 }
+    
 function playGame() {
   mychoice = "rock";
-  ComputerSelection = getComputerChoice();
+  computer = getComputerChoice();
   let playerScore;
-  let computerScore;
-
-  playRound();
+    let computerScore; 
 }
-playGame();
+    playGame();
+}
+game();
