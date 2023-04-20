@@ -4,14 +4,14 @@ function checkWinner(userChoice, computer) {
   } //when user choses rock
   else if (userChoice == "rock") {
     if (computer == "scissors") {
-      return "player";
+      return "Player";
     } else if (computer == "paper") {
       return "Computer";
     }
   } //when user choses paper
   else if (userChoice == "paper") {
     if (computer == "scissors") {
-      return "computer";
+      return "Computer";
     } else if (computer == "rock") {
       return "Player";
     }
@@ -20,27 +20,10 @@ function checkWinner(userChoice, computer) {
     if (computer == "rock") {
       return "Computer";
     } else if (computer == "paper") {
-      return "paper";
+      return "Player";
     }
   }
 }
-
-/*mychoice = prompt("Please Enter you choice", );*/
-/*function getUserChoice(mychoice) {
-  //  take userinput and check if it is rock/paper/scissor if not then displays error
-  let userChoice = mychoice.toLowerCase(); //converting the userinput to lowercase
-  if (
-    userChoice === "rock" ||
-    userChoice === "paper" ||
-    userChoice === "scissors"
-  ) {
-    return userInput;
-  } else {
-    return "error";
-  }
-  }
-  */
-//Choosing a number between 1 to 3 and then using it to choose among rock/paper/scissor
 function getComputerChoice() {
   const options = ["rock", "paper", "scissors"];
   const computerchoice = options[Math.floor(Math.random() * 3)];
@@ -52,31 +35,49 @@ function playGame() {
   if (result == "tie") {
     return "It is a tie";
   } else if (result == "player") {
-    return "You won";
+    return `you win ${userChoice} beats ${computer}`;
   } else {
-    return "Computer win";
+    return `Computer win ${computer} beats ${userChoice}`;
   }
 }
 function getPlayerChoice() {
+  const options = ["rock", "paper", "scissors"];
   let input = false;
   while (input == false) {
-    const options = prompt("Rock Paper Scissors");
-    if (options == null) {
+    const choice = prompt("Select from Rock, Paper or Scissors");
+    if (choice == null) {
       continue;
     }
-    const optionInlower = options.toLowerCase();
-    if (options.includes(optionInlower)) {
+    const choiceInlower = choice.toLowerCase();
+    if (options.includes(choiceInlower)) {
       validatedInput = true;
-      return optionInlower;
+      return choiceInlower;
     }
   }
 }
 
 function game() {
+  let Playerscore = 0;
+  let Computerscore = 0;
   for (let i = 0; i < 5; i++) {
     const userChoice = getPlayerChoice();
     const computer = getComputerChoice();
     console.log(checkWinner(userChoice, computer));
+    if (checkWinner(userChoice, computer == "Player")) {
+      Playerscore++;
+    } else if (checkWinner(userChoice, computer == "Computer")) {
+      Computerscore++;
+    }
+  }
+  console.log("game over");
+  console.log("Player score is " + Playerscore);
+  console.log("Computer score is " + Computerscore);
+  if (Playerscore > Computerscore) {
+    console.log("Player wins");
+  } else if (Computerscore > Playerscore) {
+    console.log("Computer wins");
+  } else {
+    console.log("It's a tie");
   }
 }
 
