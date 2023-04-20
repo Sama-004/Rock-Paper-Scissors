@@ -30,11 +30,11 @@ function getComputerChoice() {
   return computerchoice;
 }
 
-function playGame() {
+function playGame(userChoice, computer) {
   const result = checkWinner(userChoice, computer);
   if (result == "tie") {
-    return "It is a tie";
-  } else if (result == "player") {
+    return `It is a tie both selects ${userChoice}`;
+  } else if (result == "Player") {
     return `you win ${userChoice} beats ${computer}`;
   } else {
     return `Computer win ${computer} beats ${userChoice}`;
@@ -62,14 +62,14 @@ function game() {
   for (let i = 0; i < 5; i++) {
     const userChoice = getPlayerChoice();
     const computer = getComputerChoice();
-    console.log(checkWinner(userChoice, computer));
-    if (checkWinner(userChoice, computer == "Player")) {
+    console.log(playGame(userChoice, computer));
+    if (checkWinner(userChoice, computer) == "Player") {
       Playerscore++;
-    } else if (checkWinner(userChoice, computer == "Computer")) {
+    } else if (checkWinner(userChoice, computer) == "Computer") {
       Computerscore++;
     }
   }
-  console.log("game over");
+  console.log("Game over");
   console.log("Player score is " + Playerscore);
   console.log("Computer score is " + Computerscore);
   if (Playerscore > Computerscore) {
