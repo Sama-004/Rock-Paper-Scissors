@@ -1,27 +1,14 @@
 function checkWinner(userChoice, computer) {
-  if (userChoice === computer) {
+  if (userChoice == computer) {
     return "tie";
-  } //when user choses rock
-  else if (userChoice == "rock") {
-    if (computer == "scissors") {
-      return "Player";
-    } else if (computer == "paper") {
-      return "Computer";
-    }
-  } //when user choses paper
-  else if (userChoice == "paper") {
-    if (computer == "scissors") {
-      return "Computer";
-    } else if (computer == "rock") {
-      return "Player";
-    }
-  } // when user choses scissors
-  else if (userChoice == "scissors") {
-    if (computer == "rock") {
-      return "Computer";
-    } else if (computer == "paper") {
-      return "Player";
-    }
+  } else if (
+    (userChoice == "rock" && computer == "scissors") ||
+    (userChoice == "scissors" && computer == "paper") ||
+    (userChoice == "paper" && computer == "rock")
+  ) {
+    return "Player";
+  } else {
+    return "Computer";
   }
 }
 function getComputerChoice() {
