@@ -1,30 +1,31 @@
 let playerScore=0;
 let computerScore=0;
 let userChoice = "";
+let winMessage=document.getElementById("win-el");
+let infoMessage=document.getElementById("info-el");
+let score=document.getElementById("score-el");
+let finalScore=document.getElementById("final-el");
+let compChoice="";
 function rock() {
-  console.log("Player: rock");
   userChoice = "rock";
     playGame();
 }
 function paper() {
-  console.log("Player: paper");
   userChoice = "paper";
     playGame();
 }
 function scissors() {
-  console.log("Player: scissors");
   userChoice = "scissors";
     playGame();
 }
 function getComputerChoice() {
 let choices=["rock","paper","scissors"];
 let randNum=Math.floor(Math.random()*3);
-console.log("Computer: "+choices[randNum]);
 return choices[randNum];
 }
-
 function checkWinner(){
 let computerChoice=getComputerChoice();
+compChoice=computerChoice;
 switch(userChoice+computerChoice){
     case "rockscissors":
     case "paperrock":
@@ -39,7 +40,7 @@ switch(userChoice+computerChoice){
     case "rockrock":
     case "paperpaper":
     case "scissorsscissors":
-        console.log("It is a draw");
+        return "Draw";
 }
 
 }
@@ -47,15 +48,20 @@ function playGame(){
 let winner=checkWinner();
     if(winner==="Player"){
     playerScore+=1
-    console.log("You win this round");
+    winMessage.innerText="You Win";
+    infoMessage.innerText=userChoice +" "+"beats"+" "+compChoice;
     }
     else if(winner==="Computer"){
         computerScore+=1;
-        console.log("Computer wins this round");
+        winMessage.innerText="You Lost";
+      infoMessage.innerText=userChoice +" "+"beats"+" "+compChoice;
     }
-console.log("Player Score => "+playerScore);
-console.log("Computer Score => "+computerScore);
-    if(playerScore>computerScore)console.log("Player wins the game")
-    else if(computerScore>playerScore)console.log("Computer wins the game")
-    else console.log("It is a tie");
+    else{
+winMessage.innerText="Draw!!";
+infoMessage.innerText=userChoice +" "+"ties"+" "+compChoice;
+    }
+score.innerText="Score: "+"Player: "+playerScore+" "+"Computer: "+computerScore;
+        if(playerScore>computerScore)finalScore.innerText="You Won!";
+    else if(computerScore>playerScore)finalScore.textContent="Computer wins the game. Don't lose hope, you can still try to defeat the computer. ";
+    else finalScore.innerText="The scores are tied play a decider round";
 }
