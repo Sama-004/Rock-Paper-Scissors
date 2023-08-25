@@ -52,7 +52,7 @@ function playGame() {
   } else if (winner === "Computer") {
     computerScore += 1;
     winMessage.innerText = "You Lost this round";
-    infoMessage.innerText = userChoice + " " + "beats" + " " + compChoice;
+    infoMessage.innerText = compChoice + " " + "beats" + " " + userChoice;
   } else {
     winMessage.innerText = "This round ends in a Draw!!";
     infoMessage.innerText = userChoice + " " + "ties" + " " + compChoice;
